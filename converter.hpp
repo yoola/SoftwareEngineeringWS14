@@ -6,8 +6,7 @@
 
 class converter
 {
-
-public:
+  public:
     converter();
     virtual double convert(double inValue) = 0;
     virtual std::string toString() const = 0;
