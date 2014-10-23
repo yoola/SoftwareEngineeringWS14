@@ -1,7 +1,17 @@
 #include "dollartoeuroconverter.hpp"
 
-int main()
+int main(int argc, char* argv[])
 {
+  std::string conversion = argv[0];
+  std::string value = argv[1];
+
+  /*
+   * TODO
+   *
+   * use desired conversion here
+   *
+  */
+
   dollarToEuroConverter* myConverter = new dollarToEuroConverter();
   double aLotOfDollars = 10000;
   double aLotOfEuros = myConverter->convert(aLotOfDollars);
