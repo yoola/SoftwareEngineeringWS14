@@ -1,5 +1,6 @@
 #include "converter.hpp"
 
-converter::converter()
+void converter::print() const
 {
+    std::cout<<this->toString();
 }
