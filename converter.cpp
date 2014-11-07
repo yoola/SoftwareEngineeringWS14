@@ -1,6 +1,7 @@
 #include "converter.hpp"
 #include "TemperatureConverter.hpp"
 #include "dollartoeuroconverter.hpp"
+#include "ShoeSizeConverter.hpp"
 
 void converter::print() const
 {
@@ -16,7 +17,9 @@ enum class Factory::type {
     CELSIUS_TO_FAHRENHEIT,
     FAHRENHEIT_TO_CELSIUS,
     KELVIN_TO_CELSIUS,
-    DOLLAR_TO_EURO
+    DOLLAR_TO_EURO,
+    DE_TO_UK,
+    DE_TO_IT
 };
 
 Factory::Factory()
@@ -25,6 +28,8 @@ Factory::Factory()
     table["FahrenheitToCelsius"] = type::FAHRENHEIT_TO_CELSIUS;
     table["KelvinToCelsius"] = type::KELVIN_TO_CELSIUS;
     table["DollarToEuro"] = type::DOLLAR_TO_EURO;
+    table["DEToUK"] =type::DE_TO_UK;
+    table["DEToIT"] =type::DE_TO_IT;
 }
 
 converter* Factory::create(std::string name)
@@ -44,5 +49,12 @@ converter* Factory::create(std::string name)
 
         case type::DOLLAR_TO_EURO:
             return new dollarToEuroConverter();
+            
+        case type::DE_TO_UK:
+            return new DEToUKConverter();
+            
+        case type::DE_TO_IT:
+            return new DEToITConverter();
+            
     }
 }
