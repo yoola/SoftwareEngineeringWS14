@@ -23,5 +23,6 @@ int main(int argc, char* argv[])
     double converted_value = myConverter->convert(value);
 
     std::cout << myConverter->toString() << " has converted " << value << " to " << converted_value << "!" << std::endl;
+    delete myConverter;
     return 0;
 }
