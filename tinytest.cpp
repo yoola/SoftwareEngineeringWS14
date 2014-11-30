@@ -73,6 +73,37 @@ int testDEToIT(void)
     return 1; // Always return a value different than 0 at test end.
 }
 
+int testConverterFactory(void)
+{
+    Factory *factory = Factory::getFactory();
+
+    converter* DollarToEuroConverter = factory->create("DollarToEuro");
+    TINYTEST_ASSERT(DollarToEuroConverter->toString() == "Dollar to Euro Converter");
+    delete DollarToEuroConverter;
+
+    converter* CelsiusToFahrenheitConverter = factory->create("CelsiusToFahrenheit");
+    TINYTEST_ASSERT(CelsiusToFahrenheitConverter->toString() == "Celsius to Fahrenheit Converter");
+    delete CelsiusToFahrenheitConverter;
+
+    converter* FahrenheitToCelsiusConverter = factory->create("FahrenheitToCelsius");
+    TINYTEST_ASSERT(FahrenheitToCelsiusConverter->toString() == "Fahrenheit to Celsius Converter");
+    delete FahrenheitToCelsiusConverter;
+
+    converter* KelvinToCelsiusConverter = factory->create("KelvinToCelsius");
+    TINYTEST_ASSERT(KelvinToCelsiusConverter->toString() == "Kelvin to Celsius Converter");
+    delete KelvinToCelsiusConverter;
+
+    converter* DEToUKConverter = factory->create("DEToUK");
+    TINYTEST_ASSERT(DEToUKConverter->toString() == "DE to UK Converter");
+    delete DEToUKConverter;
+
+    converter* DEToITConverter = factory->create("DEToIT");
+    TINYTEST_ASSERT(DEToITConverter->toString() == "DE to IT Converter");
+    delete DEToITConverter;
+
+    return 1;
+}
+
 
 TINYTEST_START_SUITE(SimpleSuite);
 TINYTEST_ADD_TEST(testDollarToEuro);
