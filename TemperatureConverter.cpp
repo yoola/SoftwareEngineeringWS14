@@ -15,7 +15,7 @@ double CelsiusToFahrenheitConverter::convert(double inputCelsius){
 }
 
 std::string CelsiusToFahrenheitConverter::toString() const{
-    return "Celsius To Fahrenheit Converter";
+    return "Celsius to Fahrenheit Converter";
 }
 
 converter *CelsiusToFahrenheitConverter::create()
