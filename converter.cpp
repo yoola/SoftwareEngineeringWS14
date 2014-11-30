@@ -22,6 +22,8 @@ enum class Factory::type {
     DE_TO_IT
 };
 
+Factory Factory::factory;
+
 Factory::Factory()
 {
     table["CelsiusToFahrenheit"] = type::CELSIUS_TO_FAHRENHEIT;
@@ -30,6 +32,11 @@ Factory::Factory()
     table["DollarToEuro"] = type::DOLLAR_TO_EURO;
     table["DEToUK"] =type::DE_TO_UK;
     table["DEToIT"] =type::DE_TO_IT;
+}
+
+Factory* Factory::getFactory()
+{
+    return &factory;
 }
 
 converter* Factory::create(std::string name)

@@ -15,11 +15,15 @@ class converter
 
 class Factory {
 public:
-    Factory();
     converter* create(std::string name);
+    static Factory* getFactory();
+
+protected:
+    Factory();
 
 private:
     enum class type;
+    static Factory factory;
     std::map<std::string, type> table;
 };
 

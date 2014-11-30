@@ -17,8 +17,8 @@ int main(int argc, char* argv[])
      * use desired conversion here
      *
      */
-    Factory factory;
-    converter* myConverter = factory.create(conversion);
+    Factory *factory = Factory::getFactory();
+    converter* myConverter = factory->create(conversion);
 
     double converted_value = myConverter->convert(value);
 
