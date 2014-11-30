@@ -1,9 +1,7 @@
-//
-//  CelsiusToFahrenheitConverter.cpp
+
 //  SoftwareEng
-//
-//  Created by Jula McGibbon on 05.11.14.
-//  Copyright (c) 2014 Jula McGibbon. All rights reserved.
+
+//  Copyright (c) 2014 Jula McGibbon and Benjamin Linz. All rights reserved.
 //
 
 #include "TemperatureConverter.hpp"

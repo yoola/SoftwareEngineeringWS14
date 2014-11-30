@@ -1,10 +1,9 @@
 //
 //  ShoeSizeConverter.cpp
-//  
 //
-//  Created by Jula McGibbon on 07.11.14.
-//
-//
+//  Copyright (c) 2014 Jula McGibbon and Benjamin Linz. All rights reserved.
+
+
 
 
 #include "ShoeSizeConverter.hpp"

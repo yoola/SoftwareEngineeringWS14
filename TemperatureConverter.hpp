@@ -1,9 +1,7 @@
-//
-//  CelsiusToFahrenheitConverter.h
+
 //  SoftwareEng
-//
-//  Created by Jula McGibbon on 05.11.14.
-//  Copyright (c) 2014 Jula McGibbon. All rights reserved.
+
+//  Copyright (c) 2014 Jula McGibbon and Bejamin Linz. All rights reserved.
 //
 
 #ifndef TEMPERATURECONVERTER_H
