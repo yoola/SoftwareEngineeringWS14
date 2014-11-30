@@ -5,8 +5,17 @@
 
 int main(int argc, char* argv[])
 {
-    std::string conversion = argv[1];
-    std::string value_string = argv[2];
+    std::string conversion, value_string;
+
+    if (argc == 3) {
+        conversion = argv[1];
+        value_string = argv[2];
+    }
+    else {
+        std::cout << "Geben sie ein was sie konvertieren wollen und die Zahl: ";
+        std::cin >> conversion;
+        std::cin >> value_string;
+    }
 
     // Convert string to double
     std::istringstream value_stream(value_string);
