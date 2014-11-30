@@ -15,16 +15,20 @@ class converter
 
 class Factory {
 public:
-    converter* create(std::string name);
+    converter* create(const std::string &name);
     static Factory* getFactory();
+
+    //alternativ:
+    // void registerClass(std::string name, pcreate);
+    // void unregisterClass(std::string name);
 
 protected:
     Factory();
 
 private:
-    enum class type;
+    typedef converter* (*pcreate)();
     static Factory factory;
-    std::map<std::string, type> table;
+    std::map<std::string, pcreate> table;
 };
 
 #endif // CONVERTER_H

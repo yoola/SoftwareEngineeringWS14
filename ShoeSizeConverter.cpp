@@ -19,6 +19,12 @@ std::string DEToUKConverter::toString() const{
     return "DE to UK Converter";
 }
 
+converter *DEToUKConverter::create()
+{
+    return new DEToUKConverter;
+}
+
+
 
 double DEToITConverter::convert(double inputShoeSize){
     return (((inputShoeSize/0.667)-1.5)*0.667);
@@ -28,5 +34,7 @@ std::string DEToITConverter::toString() const{
     return "DE to IT Converter";
 }
 
-
-
+converter *DEToITConverter::create()
+{
+    return new DEToITConverter;
+}

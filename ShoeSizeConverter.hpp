@@ -25,6 +25,7 @@ class DEToUKConverter: public ShoeSizeConverter
 public:
     double convert(double inShoeSize);
     std::string toString() const;
+    static converter *create();
 };
 
 
@@ -33,6 +34,7 @@ class DEToITConverter: public ShoeSizeConverter
 public:
     double convert(double inShoeSize);
     std::string toString() const;
+    static converter *create();
 };
 
 

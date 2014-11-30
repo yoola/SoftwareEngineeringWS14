@@ -13,3 +13,8 @@ std::string dollarToEuroConverter::toString() const{
   return "Dollar to Euro Converter";
 }
 
+
+converter *dollarToEuroConverter::create()
+{
+    return new dollarToEuroConverter;
+}

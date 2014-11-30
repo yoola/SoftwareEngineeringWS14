@@ -21,6 +21,7 @@ class CelsiusToFahrenheitConverter: public TemperatureConverter
 public:
     double convert(double inCelsius);
     std::string toString() const;
+    static converter *create();
 };
 
 class FahrenheitToCelsiusConverter: public TemperatureConverter
@@ -28,6 +29,7 @@ class FahrenheitToCelsiusConverter: public TemperatureConverter
 public:
     double convert(double inFahrenheit);
     std::string toString() const;
+    static converter *create();
 };
 
 class KelvinToCelsiusConverter: public TemperatureConverter
@@ -35,6 +37,8 @@ class KelvinToCelsiusConverter: public TemperatureConverter
 public:
     double convert(double inKelvin);
     std::string toString() const;
+    static converter *create();
+
 };
 
 
