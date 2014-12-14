@@ -27,6 +27,7 @@ protected:
     Factory();
 
 private:
+    converter* create_single(const std::string &name);
     typedef converter* (*pcreate)();
     static Factory factory;
     std::map<std::string, pcreate> table;

@@ -3,6 +3,7 @@
 #include "dollartoeuroconverter.hpp"
 #include "ShoeSizeConverter.hpp"
 #include "CompositeConverter.hpp"
+#include "InverseConverter.hpp"
 #include <sstream>
 
 void converter::print() const
@@ -42,13 +43,23 @@ converter* Factory::create(const std::string &names)
 
     while (stream >> cur) {
         if (conv) {
-            converter *conv2 = (table[cur])();
+            converter *conv2 = create_single(cur);
             conv = CompositeConverter::create(conv, conv2);
         }
         else {
-            conv = (table[cur])();
+            conv = create_single(cur);
         }
     }
 
     return conv;
+}
+
+converter* Factory::create_single(const std::string &name)
+{
+    if (name.substr(name.size() - 3, 3) == "^-1") {
+        converter *conv = create_single(name.substr(0, name.size() - 3));
+        return InverseConverter::create(conv);
+    }
+    else
+        return (table[name])();
 }
