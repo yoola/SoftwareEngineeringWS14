@@ -3,53 +3,37 @@
 #include <sstream>
 #include <stdexcept>
 #include "converter.hpp"
+#include "Command.hpp"
 
 int main(int argc, char* argv[])
 {
-    std::string conversion, value_string;
+    std::cout << "Sie haben folgende Eingabemöglichkeiten: \n\
+    - Eine Conversion (Bsp: DEToUK 40) \n\
+    - Mehrere Conversionen hintereinander (Bsp: DEToUK UKToIT ITToDE 40) \n\
+    - Inversionen hinzufügen (Bsp: DEToIT UKToIT^-1 40)\n\n\
+    Sie können mehrere Befehle eingeben und durch Strg+D die Eingabe beenden\n";
 
-    if (argc == 3) {
-        conversion = argv[1];
-        value_string = argv[2];
-    }
-    else {
-        std::cout << "Sie haben folgende Eingabemöglichkeiten: \n\
-        - Eine Conversion (Bsp: DEToUK 40) \n\
-        - Mehrere Conversionen hintereinander (Bsp: DEToUK UKToIT ITToDE 40) \n\
-        - Inversionen hinzufügen (Bsp: DEToIT UKToIT^-1 40)\n";
+    CommandQueue queue;
+    std::string cur;
+    while (std::cin >> cur) {
+        std::string conversion, value_string;
         std::ostringstream conv_stream;
-        std::string cur;
-        std::cin >> cur;
         do {
             conv_stream << " " << cur;
             std::cin >> cur;
         } while (!std::isdigit(cur[0]));    // test if string could be a number
         conversion = conv_stream.str();
         value_string = cur;
+        queue.push(Command(conversion, value_string));
     }
 
-    // Convert string to double
-    std::istringstream value_stream(value_string);
-    double value;
-    value_stream >> value;
-
-    /*
-     * use desired conversion here
-     *
-     */
-    Factory *factory = Factory::getFactory();
-    converter* myConverter;
-    try {
-        myConverter = factory->create(conversion);
-    }
-    catch (std::runtime_error &error) {
-        std::cout << "Error: " << error.what() << std::endl;
-        return 1;
+    while (queue.size()) {
+        Command comm = queue.front();
+        if (comm.execute())
+            std::cout << comm.getDescription() << " has converted " << comm.getInput() <<
+                " to " << comm.getOutput() << "!" << std::endl;
+        queue.pop();
     }
 
-    double converted_value = myConverter->convert(value);
-
-    std::cout << myConverter->toString() << " has converted " << value << " to " << converted_value << "!" << std::endl;
-    delete myConverter;
     return 0;
 }

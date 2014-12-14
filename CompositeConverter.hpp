@@ -2,7 +2,7 @@
 //  CompositeConverter.hpp
 //  
 //
-//  Created by Jula McGibbon on 14.12.14.
+//  Created by Jula McGibbon and Benjamin Linz on 14.12.14.
 //
 //
 
