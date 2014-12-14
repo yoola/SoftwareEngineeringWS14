@@ -33,4 +33,22 @@ public:
 };
 
 
+class UKToITConverter: public ShoeSizeConverter
+{
+public:
+    double convert(double inShoeSize);
+    std::string toString() const;
+    static converter *create();
+};
+
+class ITToDEConverter: public ShoeSizeConverter
+{
+public:
+    double convert(double inShoeSize);
+    std::string toString() const;
+    static converter *create();
+};
+
+
+
 #endif // SHOESIZECONVERTER_H

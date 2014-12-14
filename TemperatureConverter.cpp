@@ -48,3 +48,16 @@ converter *KelvinToCelsiusConverter::create()
 {
     return new KelvinToCelsiusConverter;
 }
+
+double CelsiusToKelvinConverter::convert(double inputCelsius){
+    return (inputCelsius+273.15);
+}
+
+std::string CelsiusToKelvinConverter::toString() const{
+    return "Celsius to Kelvin Converter";
+}
+
+converter *CelsiusToKelvinConverter::create()
+{
+    return new CelsiusToKelvinConverter;
+}

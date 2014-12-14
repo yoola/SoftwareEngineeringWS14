@@ -39,5 +39,15 @@ public:
 
 };
 
+class CelsiusToKelvinConverter: public TemperatureConverter
+{
+public:
+    double convert(double inCelsius);
+    std::string toString() const;
+    static converter *create();
+};
+
+
+
 
 #endif // TEMPERATURECONVERTER_H
