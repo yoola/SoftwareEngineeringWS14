@@ -5,6 +5,7 @@
 #include "CompositeConverter.hpp"
 #include "InverseConverter.hpp"
 #include <sstream>
+#include <stdexcept>
 
 void converter::print() const
 {
@@ -60,6 +61,11 @@ converter* Factory::create_single(const std::string &name)
         converter *conv = create_single(name.substr(0, name.size() - 3));
         return InverseConverter::create(conv);
     }
-    else
-        return (table[name])();
+    else {
+        std::map<std::string, pcreate>::iterator it = table.find(name);
+        if (it != table.end())
+            return (it->second)();
+        else
+            throw std::runtime_error(std::string("Unknown converter: ") + name);
+    }
 }

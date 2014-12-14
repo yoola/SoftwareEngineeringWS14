@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <stdexcept>
 #include "converter.hpp"
 
 int main(int argc, char* argv[])
@@ -37,7 +38,14 @@ int main(int argc, char* argv[])
      *
      */
     Factory *factory = Factory::getFactory();
-    converter* myConverter = factory->create(conversion);
+    converter* myConverter;
+    try {
+        myConverter = factory->create(conversion);
+    }
+    catch (std::runtime_error &error) {
+        std::cout << "Error: " << error.what() << std::endl;
+        return 1;
+    }
 
     double converted_value = myConverter->convert(value);
 
