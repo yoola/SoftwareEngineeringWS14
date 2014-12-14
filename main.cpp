@@ -13,8 +13,15 @@ int main(int argc, char* argv[])
     }
     else {
         std::cout << "Geben sie ein was sie konvertieren wollen und die Zahl: ";
-        std::cin >> conversion;
-        std::cin >> value_string;
+        std::ostringstream conv_stream;
+        std::string cur;
+        std::cin >> cur;
+        do {
+            conv_stream << " " << cur;
+            std::cin >> cur;
+        } while (!std::isdigit(cur[0]));    // test if string could be a number
+        conversion = conv_stream.str();
+        value_string = cur;
     }
 
     // Convert string to double
