@@ -1,5 +1,5 @@
 # CPP files
-CPPFILES := converter.cpp dollartoeuroconverter.cpp TemperatureConverter.cpp ShoeSizeConverter.cpp
+CPPFILES := converter.cpp dollartoeuroconverter.cpp TemperatureConverter.cpp ShoeSizeConverter.cpp CompositeConverter.cpp
 
 # minimal makefile for SE class
 all: main
