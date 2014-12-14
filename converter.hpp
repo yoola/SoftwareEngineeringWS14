@@ -16,7 +16,7 @@ class converter
 
 class Factory {
 public:
-    converter* create(const std::string &name);
+    converter* create(const std::string &names);
     static Factory* getFactory();
 
     //alternativ:
