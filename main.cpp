@@ -12,7 +12,10 @@ int main(int argc, char* argv[])
         value_string = argv[2];
     }
     else {
-        std::cout << "Geben sie ein was sie konvertieren wollen und die Zahl: ";
+        std::cout << "Sie haben folgende Eingabemöglichkeiten: \n\
+        - Eine Conversion (Bsp: DEToUK 40) \n\
+        - Mehrere Conversionen hintereinander (Bsp: DEToUK UKToIT ITToDE 40) \n\
+        - Inversionen hinzufügen (Bsp: DEToIT UKToIT^-1 40)\n";
         std::ostringstream conv_stream;
         std::string cur;
         std::cin >> cur;
