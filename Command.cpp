@@ -8,6 +8,7 @@
 
 #include "Command.hpp"
 #include "converter.hpp"
+#include "ConversionExceptions.hpp"
 #include <sstream>
 
 Command::Command(std::string conversion, std::string value_string)
@@ -30,7 +31,12 @@ bool Command::execute()
     }
 
     description = myConverter->toString();
-    output = myConverter->convert(input);
+    try{
+        output = myConverter->convert(input);
+    } catch(CurrencyConversionException* cce){
+        std::cout<< cce->what() <<"\n";
+    }
+    
     delete myConverter;
     return true;
 }

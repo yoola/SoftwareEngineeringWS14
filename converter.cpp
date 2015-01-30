@@ -4,6 +4,7 @@
 #include "ShoeSizeConverter.hpp"
 #include "CompositeConverter.hpp"
 #include "InverseConverter.hpp"
+#include "ConversionExceptions.hpp"
 #include <sstream>
 #include <stdexcept>
 
@@ -21,12 +22,16 @@ Factory Factory::factory;
 Factory::Factory()
 {
     table["CelsiusToFahrenheit"] = CelsiusToFahrenheitConverter::create;
-    table["FahrenheitToCelsius"] = FahrenheitToCelsiusConverter::create;
+    /*old 
+	table["FahrenheitToCelsius"] = FahrenheitToCelsiusConverter::create;*/
+	table["FahrenheitToKelvin"] = FahrenheitToKelvinConverter::create;
     table["KelvinToCelsius"] = KelvinToCelsiusConverter::create;
-    table["CelsiusToKelvin"] = CelsiusToKelvinConverter::create;
+	/* old
+	table["CelsiusToKelvin"] = CelsiusToKelvinConverter::create;*/
     table["DollarToEuro"] = dollarToEuroConverter::create;
     table["DEToUK"] = DEToUKConverter::create;
-    table["DEToIT"] = DEToITConverter::create;
+	/*old
+	table["DEToIT"] = DEToITConverter::create;*/
     table["UKToIT"] = UKToITConverter::create;
     table["ITToDE"] = ITToDEConverter::create;
 }
@@ -57,7 +62,7 @@ converter* Factory::create(const std::string &names)
 
 converter* Factory::create_single(const std::string &name)
 {
-    if (name.substr(name.size() - 3, 3) == "^-1") {
+    if (name.substr(name.size() - 3, 3) == "?-1") {
         converter *conv = create_single(name.substr(0, name.size() - 3));
         return InverseConverter::create(conv);
     }
@@ -66,6 +71,6 @@ converter* Factory::create_single(const std::string &name)
         if (it != table.end())
             return (it->second)();
         else
-            throw std::runtime_error(std::string("Unknown converter: ") + name);
+            throw new ConverterNotFoundException(name);
     }
 }

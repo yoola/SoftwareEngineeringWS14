@@ -1,13 +1,13 @@
 //
-//  Command.h
+//  Command.hpp
 //  
 //
 //  Created by Jula McGibbon and Bejamin Linz on 14.12.14.
 //
 //
 
-#ifndef ____Command__
-#define ____Command__
+#ifndef COMMAND_H
+#define COMMAND_H
 #include <string>
 #include <queue>
 
@@ -27,4 +27,4 @@ private:
 
 typedef std::queue<Command> CommandQueue;
 
-#endif
+#endif //COMMAND_H
