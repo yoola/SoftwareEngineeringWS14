@@ -41,7 +41,7 @@
 //tinytest testcases don't work anymore because of added rounding function
 
 double DEToUKConverter::convert(double deSize){
-	if ((deSize<32.0 ^ deSize>49.5) || fmod(deSize * 2, 2.0) != 0)	//out of range or not a 0.5 step
+	if (((deSize<32.0) ^ (deSize>49.5)) || fmod(deSize * 2, 2.0) != 0)	//out of range or not a 0.5 step
 		throw new ShoeSizeConversionException(deSize, "DE");
 	double ukSize = ((deSize * 2) / 2.54) - 25.0;
 	return (round(ukSize*2)/2); //round in 0.5 steps //does it work with inverse?
@@ -76,7 +76,7 @@ converter *DEToITConverter::create()
 
 
 double UKToITConverter::convert(double ukSize){
-	if ((ukSize<0.0 ^ ukSize>14.0) || fmod(ukSize * 2, 2.0) != 0)	//out of range or not a 0.5 step
+	if (((ukSize<0.0) ^ (ukSize>14.0)) || fmod(ukSize * 2, 2.0) != 0)	//out of range or not a 0.5 step
 		throw new ShoeSizeConversionException(ukSize, "UK");
     /*we took the formulas (DEToUK, DEToIT) from http://www.blitzrechner.de/schuhgroessen-berechnen/,
 	 (since the DEToUK one contains a parenthesis error, we fixed the error by adding the missing parenthesis)
@@ -101,7 +101,7 @@ converter *UKToITConverter::create()
 
 
 double ITToDEConverter::convert(double itSize){
-	if ((itSize<31.0 ^ itSize>48.5) || fmod(itSize * 2, 2.0) != 0)	//out of range or not a 0.5 step
+	if (((itSize<31.0) ^ (itSize>48.5)) || fmod(itSize * 2, 2.0) != 0)	//out of range or not a 0.5 step
 		throw new ShoeSizeConversionException(itSize, "IT");
     //similar to UKToITConverter; set up equation and the resulting size differs however also from the result which is computed by the example calculator..
 	double deSize = ((itSize / (2.0 / 3)) + 1.5) * (2.0 / 3);
